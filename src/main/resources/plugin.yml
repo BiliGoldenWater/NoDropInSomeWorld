@@ -1,0 +1,47 @@
+name: NoDropInSomeWorld
+version: ${project.version}
+main: indi.goldenwater.nodropinsomeworld.NoDropInSomeWorld
+api-version: 1.15
+authors: [ Golden_Water ]
+description: Let players can't drop items in some world.
+
+commands:
+  nodropinsomeworld:
+    usage: "/nodropinsomeworld help"
+    aliases: [ "ndisw", "nodrop" ]
+    description: "Plugin main command."
+
+permissions:
+  nodropinsomeworld.*:
+    default: op
+    description: "Plugin main permission."
+    children:
+      nodropinsomeworld.commands.*:
+        default: op
+        description: "Plugin all permissions about command."
+        children:
+          nodropinsomeworld.commands.help:
+            default: true
+            description: "Get command help message."
+          nodropinsomeworld.commands.listworld:
+            default: true
+            description: "Get worlds list are denied drop."
+          nodropinsomeworld.commands.addworld:
+            default: op
+            description: "Add world to deny list."
+          nodropinsomeworld.commands.removeworld:
+            default: op
+            description: "Remove world from deny list."
+          nodropinsomeworld.commands.reload:
+            default: op
+            description: "Reload config."
+      nodropinsomeworld.bypass.*:
+        default: op
+        description: "Plugin all permissions about bypass."
+        children:
+          nodropinsomeworld.bypass.item.*:
+            default: op
+            description: "Allow player to bypass all drop deny for drop item. (For specific item, replace * to item id. Or use tip permission on drop deny triggered.)"
+          nodropinsomeworld.bypass.world.*:
+            default: op
+            description: "Allow player to bypass all drop deny in any world for drop item. (For specific world, replace * to world name. Or use tip permission on drop deny triggered.)"

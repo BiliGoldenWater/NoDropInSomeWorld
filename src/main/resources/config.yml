@@ -1,0 +1,3 @@
+messageWhenTriggerDropBan: "§c你没有权限 %premItem 或 %permWorld 在这个世界丢弃物品"
+denyWorlds:
+  - world
